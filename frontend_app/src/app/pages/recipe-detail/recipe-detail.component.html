@@ -1,0 +1,44 @@
+<a routerLink="/" class="btn" aria-label="Back to list">← Back</a>
+
+<ng-container *ngIf="recipe$ | async as recipe; else loading">
+  <article class="detail card">
+    <div class="detail__media">
+      <img [src]="recipe.image" class="detail__image" [alt]="recipe.title + ' image'">
+    </div>
+    <div class="detail__body">
+      <h1 class="detail__title">{{ recipe.title }}</h1>
+      <p class="detail__desc">{{ recipe.description }}</p>
+
+      <div class="detail__meta">
+        <span class="chip">⏱ {{ recipe.timeMinutes }} minutes</span>
+        <span class="chip" *ngFor="let tag of recipe.tags">#{{ tag }}</span>
+      </div>
+
+      <section class="detail__section">
+        <h2>Ingredients</h2>
+        <ul class="detail__list">
+          <li *ngFor="let ing of recipe.ingredients">
+            • {{ ing.amount ? ing.amount + ' ' : ''}}{{ ing.name }}
+          </li>
+        </ul>
+      </section>
+
+      <section class="detail__section">
+        <h2>Instructions</h2>
+        <ol class="detail__steps">
+          <li *ngFor="let step of recipe.instructions; let i = index">
+            <strong>Step {{ i + 1 }}:</strong> {{ step }}
+          </li>
+        </ol>
+      </section>
+    </div>
+  </article>
+</ng-container>
+
+<ng-template #loading>
+  <div class="status">
+    <div class="skeleton skeleton--line"></div>
+    <div class="skeleton skeleton--line"></div>
+    <div class="skeleton skeleton--line"></div>
+  </div>
+</ng-template>

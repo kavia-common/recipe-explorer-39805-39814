@@ -1,0 +1,29 @@
+.list__title {
+  font-size: 1.6rem;
+  font-weight: 750;
+  margin-top: .25rem;
+}
+.list__subtitle {
+  color: #4b5563;
+  margin-top: .25rem;
+  margin-bottom: .75rem;
+}
+
+.status { margin: .75rem 0; }
+.skeleton--line {
+  height: 16px;
+  border-radius: 8px;
+  margin-bottom: .5rem;
+}
+
+.alert {
+  padding: .6rem .9rem;
+  border-radius: .75rem;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: .8rem;
+}
+.alert--error {
+  background: #fff7f7;
+  color: #991b1b;
+  border: 1px solid #fecaca;
+}

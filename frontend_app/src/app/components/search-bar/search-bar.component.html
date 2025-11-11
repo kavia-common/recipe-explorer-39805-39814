@@ -1,0 +1,16 @@
+<div class="search" role="search">
+  <div class="search__field">
+    <span class="search__icon" aria-hidden="true">🔎</span>
+    <input
+      type="text"
+      class="search__input"
+      [attr.placeholder]="placeholder()"
+      [value]="query()"
+      (input)="onInput(($any($event.target).value))"
+      aria-label="Search recipes"
+    />
+    <button class="search__clear" (click)="clear()" [attr.aria-label]="'Clear search'" title="Clear" *ngIf="query()">
+      ✕
+    </button>
+  </div>
+</div>

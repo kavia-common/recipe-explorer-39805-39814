@@ -1,0 +1,14 @@
+<article class="card card--recipe">
+  <a class="card__image-wrap" [routerLink]="['/recipe', recipe.id]" [attr.aria-label]="'Open ' + recipe.title">
+    <img class="card__image" [src]="recipe.image" [alt]="recipe.title + ' image'">
+    <span class="card__time" aria-label="Time to cook">
+      ⏱ {{ recipe.timeMinutes }}m
+    </span>
+  </a>
+  <div class="card__body">
+    <h3 class="card__title">
+      <a [routerLink]="['/recipe', recipe.id]" class="card__title-link">{{ recipe.title }}</a>
+    </h3>
+    <p class="card__desc">{{ recipe.description }}</p>
+  </div>
+</article>

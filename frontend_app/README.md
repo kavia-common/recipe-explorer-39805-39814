@@ -1,59 +1,46 @@
-# Angular
+# Angular Recipe Explorer (Ocean Professional theme)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.1.
+A responsive Angular app to browse, search, and view recipe details.
 
-## Development server
+## Routing
+- `/` Recipe list with search
+- `/recipe/:id` Recipe detail page
 
-To start a local development server, run:
+## Environment configuration (no hardcoded URLs)
+The app reads API endpoints from environment variables. The RecipeService resolves in this order:
+1. `NG_APP_API_BASE`
+2. `NG_APP_BACKEND_URL`
+If neither is set, the app automatically falls back to an in-memory data set for preview purposes.
 
-```bash
-ng serve
+You can inject them as global variables or via your deployment environment.
+
+Examples:
+```html
+<!-- index.html snippet to define at runtime (optional) -->
+<script>
+  window.NG_APP_API_BASE = 'https://api.example.com';
+  // or
+  window.NG_APP_BACKEND_URL = 'https://backend.example.com';
+</script>
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Expected REST endpoints when using a real API:
+- GET `${NG_APP_API_BASE}/recipes` -> Recipe[]
 
-## Code scaffolding
+The app will show a subtle note if the API fails and will fall back to mock data.
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Theme
+Ocean Professional colors:
+- Primary: #2563EB
+- Secondary (accent): #F59E0B
+- Error: #EF4444
+The UI uses rounded corners, subtle shadows, and smooth transitions.
 
-```bash
-ng generate component component-name
-```
+## Development
+- Start: `npm start` (already configured for port 3000 in angular.json)
+- Build: `npm run build`
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Accessibility
+- Semantic HTML elements (header, main, nav)
+- Alt text for images
+- aria-labels for navigation and actions

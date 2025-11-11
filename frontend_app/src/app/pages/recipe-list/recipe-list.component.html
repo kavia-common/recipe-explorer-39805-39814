@@ -1,0 +1,19 @@
+<section aria-labelledby="list-heading">
+  <h1 id="list-heading" class="list__title">Discover Recipes</h1>
+  <p class="list__subtitle">Browse, search, and cook something delightful.</p>
+
+  <app-search-bar (search)="onSearch($event)"></app-search-bar>
+
+  <div class="status" *ngIf="(loading$ | async)">
+    <div class="skeleton skeleton--line"></div>
+    <div class="skeleton skeleton--line"></div>
+  </div>
+
+  <div class="alert alert--error" *ngIf="(error$ | async) as err">
+    <span aria-live="polite">Note: {{ err }}</span>
+  </div>
+
+  <div class="grid" *ngIf="(filtered$ | async) as recipes">
+    <app-recipe-card *ngFor="let r of recipes" [recipe]="r"></app-recipe-card>
+  </div>
+</section>
